@@ -71,14 +71,16 @@ export function PricingCalculator() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="w-full rounded-lg overflow-hidden mb-4">
+        <div className="w-full max-w-md mx-auto rounded-lg overflow-hidden mb-4">
+           <div className="aspect-square">
             <iframe
                 src="https://www.tiktok.com/embed/v2/7529553584443215109"
-                className="w-full h-[550px]"
+                className="w-full h-full"
                 allow="autoplay; encrypted-media"
                 allowFullScreen
                 data-ai-hint="pricing video"
             ></iframe>
+           </div>
         </div>
         <div className="space-y-2">
             <Label htmlFor="ingredientCost">Custo de Ingredientes (R$)</Label>
