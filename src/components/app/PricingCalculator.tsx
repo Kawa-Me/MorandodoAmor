@@ -82,7 +82,7 @@ export function PricingCalculator() {
                 src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
                 controls
                 preload="none"
-                poster="https://placehold.co/400x400/f8b0c4/e53935?text=Precificação"
+                poster="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//Untitled%20design%20(2).png"
                 controlsList="nodownload"
                 data-ai-hint="candy business"
                 >

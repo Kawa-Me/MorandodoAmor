@@ -246,7 +246,7 @@ export function RecipeTabs() {
                         src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//Como%20armazenar%20Morango%20do%20Amor.mp4"
                         controls
                         preload="none"
-                        poster="https://placehold.co/1280x720/f8b0c4/e53935?text=Armazenamento"
+                        poster="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//valida.png"
                         controlsList="nodownload"
                         data-ai-hint="strawberry storage"
                     >

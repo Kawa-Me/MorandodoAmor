@@ -29,7 +29,7 @@ export default function DashboardPage() {
                           controls
                           preload="none"
                           controlsList="nodownload"
-                          poster="https://placehold.co/1280x720/f8b0c4/e53935?text=Morango+do+Amor"
+                          poster="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//Untitled%20design%20(3).png"
                           data-ai-hint="strawberry chocolate"
                       >
                           Seu navegador não suporta a tag de vídeo.
