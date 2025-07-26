@@ -72,7 +72,7 @@ export function PricingCalculator() {
           Calcule o preço de venda ideal para não ter prejuízo. A margem de lucro sugerida é de 300%.
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <div className="space-y-4">
             <div className="space-y-2">
                 <Label htmlFor="ingredientCost" className="flex items-center gap-2"><Soup className="h-4 w-4" /> Custo total dos ingredientes (R$)</Label>
