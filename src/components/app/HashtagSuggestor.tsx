@@ -25,7 +25,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Lightbulb, Loader2, Wand2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const formSchema = z.object({
   keywords: z
@@ -50,6 +50,7 @@ export function HashtagSuggestor() {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setLoading(true);
+    setHashtags([]);
     const result = await getHashtagSuggestions(data.keywords);
     setLoading(false);
 
@@ -112,21 +113,21 @@ export function HashtagSuggestor() {
                   <SkeletonBadge /> <SkeletonBadge />
                 </>
               ) : (
-                <AnimatePresence>
-                  {hashtags.map((tag, index) => (
-                    <motion.div
-                      key={tag}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.5 }}
-                      transition={{ duration: 0.2, delay: index * 0.05 }}
-                    >
-                      <Badge variant="secondary" className="text-base py-1 px-3 cursor-pointer hover:bg-accent/20" onClick={() => navigator.clipboard.writeText(`#${tag}`)}>
-                        #{tag}
-                      </Badge>
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
+                  <>
+                    {hashtags.map((tag, index) => (
+                      <motion.div
+                        key={tag}
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        transition={{ duration: 0.2, delay: index * 0.05 }}
+                      >
+                        <Badge variant="secondary" className="text-base py-1 px-3 cursor-pointer hover:bg-accent/20" onClick={() => navigator.clipboard.writeText(`#${tag}`)}>
+                          #{tag}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </>
               )}
             </div>
           </div>
