@@ -77,7 +77,7 @@ export function HashtagSuggestor() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline text-2xl flex items-center gap-2">
+        <CardTitle className="font-headline text-xl md:text-2xl flex items-center gap-2">
           <Wand2 className="h-6 w-6 text-primary" />
           Sugestor de Hashtags (IA)
         </CardTitle>

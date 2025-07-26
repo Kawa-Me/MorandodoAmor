@@ -17,7 +17,7 @@ export default function Home() {
           <div className="lg:col-span-3 space-y-8">
             <Card className="overflow-hidden">
                 <CardHeader>
-                    <CardTitle className="font-headline text-3xl md:text-4xl">Sua Jornada para o Sucesso Começa Aqui</CardTitle>
+                    <CardTitle className="font-headline text-2xl md:text-4xl">Sua Jornada para o Sucesso Começa Aqui</CardTitle>
                     <CardDescription>Aprenda a fazer o Morango do Amor perfeito e transforme sua paixão em uma fonte de renda extra.</CardDescription>
                 </CardHeader>
                 <CardContent>

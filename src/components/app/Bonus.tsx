@@ -6,7 +6,7 @@ export function IfoodBonus() {
     return (
         <Card className="flex flex-col">
             <CardHeader>
-                <CardTitle className="font-headline text-2xl flex items-center gap-2">
+                <CardTitle className="font-headline text-xl md:text-2xl flex items-center gap-2">
                     <ShoppingCart className="h-6 w-6 text-primary" />
                     Dica Extra: Venda no iFood
                 </CardTitle>
@@ -24,7 +24,7 @@ export function PdfBonus() {
     return (
         <Card className="flex flex-col">
             <CardHeader>
-                <CardTitle className="font-headline text-2xl flex items-center gap-2">
+                <CardTitle className="font-headline text-xl md:text-2xl flex items-center gap-2">
                     <Download className="h-6 w-6 text-primary" />
                     Material de Apoio
                 </CardTitle>

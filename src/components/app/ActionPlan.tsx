@@ -73,7 +73,7 @@ export function ActionPlan() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline text-3xl flex items-center gap-2">
+        <CardTitle className="font-headline text-2xl md:text-3xl flex items-center gap-2">
           <Rocket className="h-7 w-7 text-primary" />
           Plano de Ação (7 Dias)
         </CardTitle>
@@ -83,7 +83,7 @@ export function ActionPlan() {
         <Accordion type="single" collapsible defaultValue="item-0">
           {actionPlanData.map((item, index) => (
             <AccordionItem value={`item-${index}`} key={item.day}>
-              <AccordionTrigger className="font-headline text-xl">
+              <AccordionTrigger className="font-headline text-lg md:text-xl text-left">
                 Dia {item.day}: {item.title}
               </AccordionTrigger>
               <AccordionContent>

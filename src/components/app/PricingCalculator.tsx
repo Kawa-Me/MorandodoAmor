@@ -66,7 +66,7 @@ export function PricingCalculator() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="font-headline text-2xl flex items-center gap-2">
+        <CardTitle className="font-headline text-xl md:text-2xl flex items-center gap-2">
             <Calculator className="h-6 w-6 text-primary" />
             Calculadora de Preços
         </CardTitle>

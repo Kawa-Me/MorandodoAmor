@@ -29,7 +29,7 @@ const RecipeStep = ({
   children: React.ReactNode;
 }) => (
   <div>
-    <h3 className="font-headline text-xl font-bold mt-4 mb-2 text-primary/90">{title}</h3>
+    <h3 className="font-headline text-lg md:text-xl font-bold mt-4 mb-2 text-primary/90">{title}</h3>
     <div className="space-y-2 text-foreground/90">{children}</div>
   </div>
 );
@@ -43,7 +43,7 @@ export function RecipeTabs() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline text-3xl">
+        <CardTitle className="font-headline text-2xl md:text-3xl">
           Receitas para o Morango Perfeito
         </CardTitle>
         <CardDescription>Siga os passos e prepare-se para encantar seus clientes.</CardDescription>
@@ -58,7 +58,7 @@ export function RecipeTabs() {
           </TabsList>
 
           <TabsContent value="calda" className="mt-6">
-            <h2 className="font-headline text-2xl font-bold">
+            <h2 className="font-headline text-xl md:text-2xl font-bold">
               Receita da Calda Perfeita
             </h2>
              <RecipeStep title="Ingredientes">
@@ -88,7 +88,7 @@ export function RecipeTabs() {
           </TabsContent>
 
           <TabsContent value="brigadeiro" className="mt-6">
-            <h2 className="font-headline text-2xl font-bold">
+            <h2 className="font-headline text-xl md:text-2xl font-bold">
               Variações de Recheios de Brigadeiro
             </h2>
             <CardDescription>
@@ -218,7 +218,7 @@ export function RecipeTabs() {
           </TabsContent>
 
           <TabsContent value="assembly" className="mt-6">
-            <h2 className="font-headline text-2xl font-bold">
+            <h2 className="font-headline text-xl md:text-2xl font-bold">
              Montagem e Finalização Rápida
             </h2>
             <div className="mt-4 space-y-6">
@@ -236,7 +236,7 @@ export function RecipeTabs() {
           </TabsContent>
 
           <TabsContent value="storage" className="mt-6">
-            <h2 className="font-headline text-2xl font-bold">
+            <h2 className="font-headline text-xl md:text-2xl font-bold">
               Conservação e Validade
             </h2>
             <div className="mt-4 space-y-6">
