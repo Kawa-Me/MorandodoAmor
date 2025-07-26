@@ -15,25 +15,25 @@ import { Label } from "@/components/ui/label";
 import { Calculator, Package, Percent, Soup, WholeWord } from "lucide-react";
 
 interface Costs {
-  ingredientCost: number;
-  packagingCost: number;
-  profitMargin: number;
-  recipeYield: number;
+  ingredientCost: number | "";
+  packagingCost: number | "";
+  profitMargin: number | "";
+  recipeYield: number | "";
 }
 
 export function PricingCalculator() {
   const [costs, setCosts] = useState<Costs>({
-    ingredientCost: 20,
-    packagingCost: 5,
+    ingredientCost: "",
+    packagingCost: "",
     profitMargin: 300,
-    recipeYield: 15,
+    recipeYield: "",
   });
 
   const handleCostChange =
     (field: keyof Costs) => (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
       if (value === "") {
-        setCosts((prev) => ({ ...prev, [field]: "" as any }));
+        setCosts((prev) => ({ ...prev, [field]: "" }));
         return;
       }
       const numValue = parseFloat(value);
@@ -72,19 +72,19 @@ export function PricingCalculator() {
           Calcule o preço de venda ideal para não ter prejuízo. A margem de lucro sugerida é de 300%.
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         <div className="space-y-4">
             <div className="space-y-2">
                 <Label htmlFor="ingredientCost" className="flex items-center gap-2"><Soup className="h-4 w-4" /> Custo total dos ingredientes (R$)</Label>
-                <Input id="ingredientCost" type="number" placeholder="20.00" value={costs.ingredientCost} onChange={handleCostChange("ingredientCost")} />
+                <Input id="ingredientCost" type="number" placeholder="Digite aqui" value={costs.ingredientCost} onChange={handleCostChange("ingredientCost")} />
             </div>
             <div className="space-y-2">
                 <Label htmlFor="packagingCost" className="flex items-center gap-2"><Package className="h-4 w-4" /> Custo total das embalagens (R$)</Label>
-                <Input id="packagingCost" type="number" placeholder="5.00" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
+                <Input id="packagingCost" type="number" placeholder="Digite aqui" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
             </div>
             <div className="space-y-2">
                 <Label htmlFor="recipeYield" className="flex items-center gap-2"><WholeWord className="h-4 w-4" /> Quantos morangos rendeu?</Label>
-                <Input id="recipeYield" type="number" placeholder="15" value={costs.recipeYield} onChange={handleCostChange("recipeYield")} />
+                <Input id="recipeYield" type="number" placeholder="Digite aqui" value={costs.recipeYield} onChange={handleCostChange("recipeYield")} />
             </div>
             <div className="space-y-2">
                 <Label htmlFor="profitMargin" className="flex items-center gap-2"><Percent className="h-4 w-4" /> Margem de Lucro (%)</Label>
