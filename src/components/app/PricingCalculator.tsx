@@ -66,7 +66,7 @@ export function PricingCalculator() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="font-headline text-xl md:text-2xl flex items-center gap-2">
+        <CardTitle className="font-headline text-xl flex items-center gap-2">
             <Calculator className="h-6 w-6 text-primary" />
             Calculadora de Preços
         </CardTitle>
@@ -80,8 +80,6 @@ export function PricingCalculator() {
                 <video
                 className="w-full h-full object-cover"
                 src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
-                autoPlay
-                loop
                 playsInline
                 controls
                 controlsList="nodownload"
@@ -112,7 +110,7 @@ export function PricingCalculator() {
                 <div className="space-y-2">
                     <Label htmlFor="profitMargin" className="flex items-center gap-2"><Percent className="h-4 w-4" /> Margem de Lucro (%)</Label>
                     <div className="relative">
-                    <Input id="profitMargin" type="number" placeholder="Padrão: 300" className="pr-8" value={costs.profitMargin} onChange={handleCostChange("profitMargin")} />
+                    <Input id="profitMargin" type="number" placeholder="Digite aqui" className="pr-8" value={costs.profitMargin} onChange={handleCostChange("profitMargin")} />
                     </div>
                 </div>
             </div>
