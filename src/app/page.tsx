@@ -19,11 +19,11 @@ export default function Home() {
                 <CardTitle className="font-headline text-3xl">Vídeo de Introdução</CardTitle>
                 <CardDescription>Veja como é fácil começar sua jornada com o Morango do Amor.</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-0">
                 <div className="mx-auto flex justify-center">
-                  <div className="relative w-full max-w-xs h-auto">
+                  <div className="w-full max-w-xs">
                       <video
-                          className="rounded-lg w-full h-full"
+                          className="rounded-b-lg w-full h-auto"
                           src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//RECEITA%20MORANGO%20DO%20AMOR.mp4"
                           controls
                       >
@@ -31,7 +31,7 @@ export default function Home() {
                       </video>
                   </div>
                 </div>
-                <p className="text-xs text-muted-foreground mt-2 text-right">Créditos: @tabataromero</p>
+                <p className="text-xs text-muted-foreground mt-2 text-right px-6 pb-4">Créditos: @tabataromero</p>
               </CardContent>
             </Card>
             <RecipeTabs />
