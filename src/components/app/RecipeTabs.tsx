@@ -126,14 +126,16 @@ export function RecipeTabs() {
               Conservação e Validade
             </h2>
             <div className="mt-4 space-y-6">
-                <div className="aspect-video w-full">
-                  <iframe
-                    className="w-full h-full rounded-lg"
-                    src="https://www.youtube.com/embed/xWSAEaCNCWo"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
+                 <div className="w-full aspect-video rounded-lg overflow-hidden">
+                    <video
+                        className="w-full h-full object-cover"
+                        src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//Como%20armazenar%20Morango%20do%20Amor.mp4"
+                        controls
+                        controlsList="nodownload"
+                        data-ai-hint="strawberry storage"
+                    >
+                        Seu navegador não suporta a tag de vídeo.
+                    </video>
                 </div>
                 <ul className="list-disc pl-5 space-y-2 mt-4">
                   <li>Conserve na geladeira por até 48 horas.</li>
