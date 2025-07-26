@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { DollarSign, Percent } from "lucide-react";
+import { Calculator, Percent } from "lucide-react";
 
 interface Costs {
   ingredientCost: number;
@@ -31,8 +31,9 @@ export function PricingCalculator() {
   const handleCostChange =
     (field: keyof Costs) => (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
+      // Permitir campo vazio para que o usuário possa apagar
       if (value === "") {
-        setCosts((prev) => ({ ...prev, [field]: "" }));
+        setCosts((prev) => ({ ...prev, [field]: "" as any }));
         return;
       }
       const numValue = parseFloat(value);
@@ -61,67 +62,49 @@ export function PricingCalculator() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="font-headline text-3xl">Precificação e Lucratividade</CardTitle>
+        <CardTitle className="font-headline text-2xl flex items-center gap-2">
+            <Calculator className="h-6 w-6 text-primary" />
+            Precificação e Lucro
+        </CardTitle>
         <CardDescription>
-          Calcule o preço ideal para seus morangos do amor. A margem de lucro ideal é de 3 a 4 vezes o custo.
+          Calcule o preço de venda ideal. A margem de lucro sugerida é de 300% sobre o custo.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="w-full max-w-sm mx-auto mb-4">
-            <div className="relative pb-[177.77%] h-0">
-                <iframe 
-                    src="https://www.tiktok.com/embed/v2/7529553584443215109" 
-                    className="absolute top-0 left-0 w-full h-full rounded-lg border-0"
-                    allow="autoplay; encrypted-media;"
-                    allowFullScreen
-                    >
-                </iframe>
-            </div>
+        <div className="space-y-2">
+            <Label htmlFor="ingredientCost">Custo de Ingredientes (R$)</Label>
+            <Input id="ingredientCost" type="number" placeholder="20.00" value={costs.ingredientCost} onChange={handleCostChange("ingredientCost")} />
         </div>
         <div className="space-y-2">
-            <Label htmlFor="ingredientCost">Custo de Ingredientes</Label>
-            <div className="relative">
-                <span className="absolute left-2.5 top-2.5 text-sm text-muted-foreground">R$</span>
-                <Input id="ingredientCost" type="number" placeholder="20.00" className="pl-8" value={costs.ingredientCost} onChange={handleCostChange("ingredientCost")} />
-            </div>
+            <Label htmlFor="packagingCost">Custo de Embalagens (R$)</Label>
+            <Input id="packagingCost" type="number" placeholder="5.00" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
         </div>
         <div className="space-y-2">
-            <Label htmlFor="packagingCost">Custo de Embalagens</Label>
-            <div className="relative">
-                <span className="absolute left-2.5 top-2.5 text-sm text-muted-foreground">R$</span>
-                <Input id="packagingCost" type="number" placeholder="5.00" className="pl-8" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
-            </div>
-        </div>
-        <div className="space-y-2">
-            <Label htmlFor="productionTimeCost">Custo do Tempo de Produção</Label>
-            <div className="relative">
-                <span className="absolute left-2.5 top-2.5 text-sm text-muted-foreground">R$</span>
-                <Input id="productionTimeCost" type="number" placeholder="10.00" className="pl-8" value={costs.productionTimeCost} onChange={handleCostChange("productionTimeCost")} />
-            </div>
+            <Label htmlFor="productionTimeCost">Custo do Tempo de Produção (R$)</Label>
+            <Input id="productionTimeCost" type="number" placeholder="10.00" value={costs.productionTimeCost} onChange={handleCostChange("productionTimeCost")} />
         </div>
         <div className="space-y-2">
             <Label htmlFor="profitMargin">Margem de Lucro (%)</Label>
             <div className="relative">
-              <Percent className="absolute right-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input id="profitMargin" type="number" placeholder="300" className="pr-8" value={costs.profitMargin} onChange={handleCostChange("profitMargin")} />
+              <Percent className="absolute right-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             </div>
           </div>
       </CardContent>
-      <CardFooter className="bg-secondary/50 p-4 rounded-b-lg mt-4">
-        <div className="w-full space-y-2">
-            <div className="flex justify-between items-center font-medium">
-                <span>Custo Total por Unidade:</span>
-                <span>{formatCurrency(totalCost)}</span>
+      <CardFooter className="bg-muted/50 p-4 rounded-b-lg mt-4 flex flex-col items-start gap-4">
+        <div className="w-full space-y-2 text-sm">
+            <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Custo Total por Unidade:</span>
+                <span className="font-medium">{formatCurrency(totalCost)}</span>
             </div>
-            <div className="flex justify-between items-center font-bold text-lg text-primary">
-                <span className="font-headline">Preço de Venda Sugerido:</span>
-                <span className="font-headline">{formatCurrency(suggestedPrice)}</span>
+             <div className="flex justify-between items-center">
+                <span className="text-muted-foreground">Lucro por Unidade:</span>
+                <span className="font-medium">{formatCurrency(profit)}</span>
             </div>
-             <div className="flex justify-between items-center text-sm text-muted-foreground pt-2">
-                <span>Lucro por Unidade:</span>
-                <span>{formatCurrency(profit)}</span>
-            </div>
-            <p className="text-xs text-center pt-2 text-muted-foreground">Sugestão de preço por unidade: R$15 a R$20 (dependendo da região e apresentação).</p>
+        </div>
+        <div className="w-full flex justify-between items-center font-bold text-lg text-primary bg-primary/10 p-3 rounded-lg">
+            <span className="font-headline">Venda Sugerida:</span>
+            <span className="font-headline">{formatCurrency(suggestedPrice)}</span>
         </div>
       </CardFooter>
     </Card>

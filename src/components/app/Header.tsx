@@ -1,16 +1,17 @@
-import { Heart } from "lucide-react";
 import { StrawberryIcon } from "@/components/icons/StrawberryIcon";
 
 export function Header() {
   return (
-    <header className="bg-card/80 backdrop-blur-sm sticky top-0 z-50 border-b">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4 text-primary">
-          <Heart className="h-8 w-8" />
-          <h1 className="font-headline text-4xl font-bold tracking-tight text-center sm:text-5xl">
+    <header className="bg-card/95 backdrop-blur-sm sticky top-0 z-50 border-b shadow-sm">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-3 text-primary">
+          <StrawberryIcon className="h-9 w-9" />
+          <h1 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
             Morango do Amor
           </h1>
-          <StrawberryIcon className="h-10 w-10" />
+        </div>
+        <div className="font-body text-sm text-muted-foreground hidden md:block">
+            Sua Próxima Renda Extra
         </div>
       </div>
     </header>

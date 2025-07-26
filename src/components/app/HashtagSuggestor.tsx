@@ -23,9 +23,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Lightbulb, Loader2, Wand2 } from "lucide-react";
+import { Loader2, Wand2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   keywords: z
@@ -65,39 +66,43 @@ export function HashtagSuggestor() {
     }
   };
 
+  const copyToClipboard = (tag: string) => {
+    navigator.clipboard.writeText(`#${tag}`);
+    toast({
+      title: "Copiado!",
+      description: `A hashtag #${tag} foi copiada para a área de transferência.`,
+    });
+  }
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline text-3xl flex items-center gap-2">
-          <Wand2 className="h-7 w-7 text-accent" />
-          Sugestor de Hashtags com IA
+        <CardTitle className="font-headline text-2xl flex items-center gap-2">
+          <Wand2 className="h-6 w-6 text-primary" />
+          Sugestor de Hashtags (IA)
         </CardTitle>
         <CardDescription>
-          Maximize seu alcance nas redes sociais com hashtags em alta. Use #morangodoamor, #docesartesanais, #rendaextra.
+          Potencialize seu alcance nas redes sociais. Insira palavras-chave e deixe a IA fazer a mágica.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="keywords"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Digite as palavras-chave</FormLabel>
+                  <FormLabel>Palavras-chave</FormLabel>
                   <FormControl>
-                    <Input placeholder="ex: doces, confeitaria" {...field} />
+                    <Input placeholder="ex: doces, confeitaria, renda extra" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={loading}>
-              {loading ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                <Lightbulb className="mr-2 h-4 w-4" />
-              )}
+            <Button type="submit" className="w-full" disabled={loading}>
+              {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Sugerir Hashtags
             </Button>
           </form>
@@ -105,12 +110,12 @@ export function HashtagSuggestor() {
 
         {(loading || hashtags.length > 0) && (
           <div className="mt-6">
-            <h4 className="font-headline text-lg">Sugestões</h4>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <h4 className="font-headline text-lg mb-3">Sugestões (clique para copiar):</h4>
+            <div className="flex flex-wrap gap-2">
               {loading ? (
                 <>
                   <SkeletonBadge /> <SkeletonBadge /> <SkeletonBadge />
-                  <SkeletonBadge /> <SkeletonBadge />
+                  <SkeletonBadge /> <SkeletonBadge /> <SkeletonBadge />
                 </>
               ) : (
                   <>
@@ -122,7 +127,11 @@ export function HashtagSuggestor() {
                         exit={{ opacity: 0, scale: 0.5 }}
                         transition={{ duration: 0.2, delay: index * 0.05 }}
                       >
-                        <Badge variant="secondary" className="text-base py-1 px-3 cursor-pointer hover:bg-accent/20" onClick={() => navigator.clipboard.writeText(`#${tag}`)}>
+                        <Badge 
+                          variant="secondary" 
+                          className="text-sm py-1 px-3 cursor-pointer hover:bg-primary/10 hover:border-primary/20 border border-transparent" 
+                          onClick={() => copyToClipboard(tag)}
+                        >
                           #{tag}
                         </Badge>
                       </motion.div>

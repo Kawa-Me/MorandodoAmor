@@ -4,57 +4,57 @@
 
 @layer base {
   :root {
-    --background: 340 77% 86%; /* #F8BBD0 - light pastel pink */
-    --foreground: 340 15% 25%; /* Dark, desaturated pink for text */
-    
-    --card: 0 0% 100%; /* White cards for contrast */
-    --card-foreground: 340 15% 25%;
+    --background: 0 0% 98%; /* Almost white */
+    --foreground: 240 10% 3.9%; /* Dark blue/black for text */
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 340 15% 25%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 1 79% 55%; /* #E53935 - vibrant strawberry red */
+    --primary: 348 83.3% 47.1%; /* Vibrant strawberry red */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 340 77% 92%; /* Lighter pink for secondary elements */
-    --secondary-foreground: 340 15% 25%;
+    --secondary: 348 83.3% 95%; /* Light, soft pink */
+    --secondary-foreground: 348 83.3% 47.1%;
 
-    --muted: 340 77% 92%;
-    --muted-foreground: 340 10% 45%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 42 100% 50%; /* #FFB300 - yellow-gold */
-    --accent-foreground: 42 100% 15%; /* Dark brown/black for text on accent */
+    --accent: 348 83.3% 67.1%; /* Brighter pink for accents */
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 340 77% 80%;
-    --input: 340 77% 92%;
-    --ring: 1 79% 65%; /* Lighter red for ring */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 348 83.3% 47.1%;
 
     --radius: 0.75rem;
   }
 
   .dark {
-    --background: 340 15% 15%;
+    --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 340 15% 20%;
+    --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 340 15% 20%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 1 79% 55%;
+    --primary: 348 83.3% 47.1%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 340 10% 25%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 340 10% 25%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 42 100% 50%;
-    --accent-foreground: 42 100% 15%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 340 10% 30%;
-    --input: 340 10% 30%;
-    --ring: 1 79% 65%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 348 83.3% 47.1%;
   }
 }
 

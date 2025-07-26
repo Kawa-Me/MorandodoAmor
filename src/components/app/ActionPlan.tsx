@@ -4,8 +4,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle2 } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle2, Rocket } from "lucide-react";
 
 const actionPlanData = [
   {
@@ -73,9 +73,11 @@ export function ActionPlan() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline text-3xl">
-          BÔNUS: Plano Rápido de Ação (7 Dias)
+        <CardTitle className="font-headline text-3xl flex items-center gap-2">
+          <Rocket className="h-7 w-7 text-primary" />
+          Plano de Ação (7 Dias)
         </CardTitle>
+        <CardDescription>Um guia passo a passo para lançar seu negócio em uma semana.</CardDescription>
       </CardHeader>
       <CardContent>
         <Accordion type="single" collapsible defaultValue="item-0">
@@ -88,7 +90,7 @@ export function ActionPlan() {
                 <ul className="space-y-3 pt-2">
                   {item.tasks.map((task, taskIndex) => (
                     <li key={taskIndex} className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                      <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <span>{task}</span>
                     </li>
                   ))}

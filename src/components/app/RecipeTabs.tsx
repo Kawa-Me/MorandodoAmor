@@ -3,6 +3,7 @@
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -12,6 +13,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
+import { Apple, Cookie, Package, Refrigerator } from "lucide-react";
 
 const RecipeStep = ({
   title,
@@ -21,7 +23,7 @@ const RecipeStep = ({
   children: React.ReactNode;
 }) => (
   <div>
-    <h3 className="font-headline text-xl font-bold mt-6 mb-2">{title}</h3>
+    <h3 className="font-headline text-xl font-bold mt-6 mb-2 text-primary/90">{title}</h3>
     <div className="space-y-2 text-foreground/90">{children}</div>
   </div>
 );
@@ -31,16 +33,17 @@ export function RecipeTabs() {
     <Card>
       <CardHeader>
         <CardTitle className="font-headline text-3xl">
-          O Morango Perfeito
+          Receitas para o Morango Perfeito
         </CardTitle>
+        <CardDescription>Siga os passos e prepare-se para encantar seus clientes.</CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="calda">
           <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto">
-            <TabsTrigger value="calda">Receita da Calda</TabsTrigger>
-            <TabsTrigger value="brigadeiro">Recheio de Brigadeiro</TabsTrigger>
-            <TabsTrigger value="assembly">Montagem</TabsTrigger>
-            <TabsTrigger value="storage">Conservação</TabsTrigger>
+            <TabsTrigger value="calda" className="flex items-center gap-2"><Cookie className="h-4 w-4" /> Calda</TabsTrigger>
+            <TabsTrigger value="brigadeiro" className="flex items-center gap-2"><Apple className="h-4 w-4" />Recheio</TabsTrigger>
+            <TabsTrigger value="assembly" className="flex items-center gap-2"><Package className="h-4 w-4" />Montagem</TabsTrigger>
+            <TabsTrigger value="storage" className="flex items-center gap-2"><Refrigerator className="h-4 w-4" />Conservação</TabsTrigger>
           </TabsList>
 
           <TabsContent value="calda" className="mt-6">
@@ -56,7 +59,7 @@ export function RecipeTabs() {
                 </ul>
               </RecipeStep>
               <RecipeStep title="Modo de Preparo">
-                <ol className="list-decimal pl-5 space-y-1">
+                <ol className="list-decimal pl-5 space-y-2">
                   <li>Misture todos os ingredientes (menos o limão) em uma panela.</li>
                   <li>Leve ao fogo médio até começar a ferver.</li>
                   <li>Sem mexer, cozinhe até atingir o ponto de bala dura (use termômetro ou teste do copo com água gelada).</li>
@@ -87,7 +90,7 @@ export function RecipeTabs() {
                 </ul>
               </RecipeStep>
               <RecipeStep title="Modo de preparo">
-                <ol className="list-decimal pl-5 space-y-1">
+                <ol className="list-decimal pl-5 space-y-2">
                   <li>Misture todos os ingredientes (exceto o creme de leite) e leve ao fogo baixo.</li>
                   <li>Mexa até desgrudar do fundo da panela.</li>
                   <li>Adicione o creme de leite e misture bem.</li>
@@ -106,7 +109,7 @@ export function RecipeTabs() {
             </h2>
             <div className="mt-4 space-y-6">
               <RecipeStep title="Passo a passo">
-                <ol className="list-decimal pl-5 space-y-1">
+                <ol className="list-decimal pl-5 space-y-2">
                     <li>Lave e seque bem os morangos.</li>
                     <li>Mergulhe um por um na calda.</li>
                     <li>Deixe secar em papel manteiga.</li>
@@ -132,7 +135,7 @@ export function RecipeTabs() {
                     allowFullScreen
                   ></iframe>
                 </div>
-                <ul className="list-disc pl-5 space-y-1 mt-4">
+                <ul className="list-disc pl-5 space-y-2 mt-4">
                   <li>Conserve na geladeira por até 48 horas.</li>
                   <li>Use embalagens bem vedadas.</li>
                   <li>Evite locais quentes para manter a crocância da calda.</li>
