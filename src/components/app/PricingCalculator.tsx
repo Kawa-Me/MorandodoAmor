@@ -72,15 +72,18 @@ export function PricingCalculator() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="w-full max-w-md mx-auto rounded-lg overflow-hidden mb-4">
-           <div className="aspect-square">
-            <iframe
-                src="https://www.tiktok.com/embed/v2/7529553584443215109"
-                className="w-full h-full"
-                allow="autoplay; encrypted-media"
-                allowFullScreen
+           <div className="aspect-square bg-muted rounded-lg">
+            <video
+                src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
+                className="w-full h-full object-cover rounded-lg"
+                controls
+                controlsList="nodownload"
                 data-ai-hint="pricing video"
-            ></iframe>
+            >
+               Seu navegador não suporta a tag de vídeo.
+            </video>
            </div>
+           <p className="text-xs text-muted-foreground mt-2 text-right">Créditos do vídeo: @deboradelus</p>
         </div>
         <div className="space-y-2">
             <Label htmlFor="ingredientCost">Custo de Ingredientes (R$)</Label>
