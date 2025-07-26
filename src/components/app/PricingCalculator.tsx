@@ -32,6 +32,7 @@ export function PricingCalculator() {
   const handleCostChange =
     (field: keyof Costs) => (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
+      // Allow clearing the input
       if (value === "") {
         setCosts((prev) => ({ ...prev, [field]: "" }));
         return;
@@ -81,6 +82,8 @@ export function PricingCalculator() {
                 className="w-full h-full object-cover"
                 src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
                 controls
+                preload="none"
+                poster="https://placehold.co/400x400/f8b0c4/e53935?text=Precificação"
                 controlsList="nodownload"
                 data-ai-hint="candy business"
                 >
