@@ -21,13 +21,13 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="aspect-video w-full">
-                  <iframe
+                  <video
                     className="w-full h-full rounded-lg"
-                    src="https://www.youtube.com/embed/EOOEUIMcwMA"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
+                    src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//RECEITA%20MORANGO%20DO%20AMOR.mp4"
+                    controls
+                  >
+                    Seu navegador não suporta a tag de vídeo.
+                  </video>
                 </div>
               </CardContent>
             </Card>
