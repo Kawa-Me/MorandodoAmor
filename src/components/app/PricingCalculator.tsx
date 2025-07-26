@@ -76,7 +76,7 @@ export function PricingCalculator() {
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="flex flex-col items-center justify-center space-y-2">
-            <div className="w-full rounded-lg overflow-hidden shadow-lg">
+            <div className="w-full max-w-sm mx-auto aspect-square rounded-lg overflow-hidden shadow-lg">
                 <video
                 className="w-full h-full object-cover"
                 src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
