@@ -20,16 +20,16 @@ export default function Home() {
                 <CardDescription>Veja como é fácil começar sua jornada com o Morango do Amor.</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="w-full max-w-xs mx-auto">
-                    <div className="relative pb-[177.77%] h-0">
-                        <video
-                            className="absolute top-0 left-0 w-full h-full rounded-lg"
-                            src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//RECEITA%20MORANGO%20DO%20AMOR.mp4"
-                            controls
-                        >
-                            Seu navegador não suporta a tag de vídeo.
-                        </video>
-                    </div>
+                <div className="mx-auto flex justify-center">
+                  <div className="relative w-full max-w-xs h-auto">
+                      <video
+                          className="rounded-lg w-full h-full"
+                          src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//RECEITA%20MORANGO%20DO%20AMOR.mp4"
+                          controls
+                      >
+                          Seu navegador não suporta a tag de vídeo.
+                      </video>
+                  </div>
                 </div>
                 <p className="text-xs text-muted-foreground mt-2 text-right">Créditos: @tabataromero</p>
               </CardContent>
