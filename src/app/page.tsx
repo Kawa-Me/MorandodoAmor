@@ -29,6 +29,7 @@ export default function Home() {
                     Seu navegador não suporta a tag de vídeo.
                   </video>
                 </div>
+                <p className="text-xs text-muted-foreground mt-2 text-right">Créditos: @tabataromero</p>
               </CardContent>
             </Card>
             <RecipeTabs />
