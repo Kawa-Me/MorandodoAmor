@@ -1,6 +1,12 @@
 "use client";
 
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   Card,
   CardContent,
   CardDescription,
@@ -23,10 +29,15 @@ const RecipeStep = ({
   children: React.ReactNode;
 }) => (
   <div>
-    <h3 className="font-headline text-xl font-bold mt-6 mb-2 text-primary/90">{title}</h3>
+    <h3 className="font-headline text-xl font-bold mt-4 mb-2 text-primary/90">{title}</h3>
     <div className="space-y-2 text-foreground/90">{children}</div>
   </div>
 );
+
+const RecipeDetail = ({ children }: { children: React.ReactNode }) => (
+    <div className="space-y-1 text-foreground/90">{children}</div>
+);
+
 
 export function RecipeTabs() {
   return (
@@ -78,29 +89,132 @@ export function RecipeTabs() {
 
           <TabsContent value="brigadeiro" className="mt-6">
             <h2 className="font-headline text-2xl font-bold">
-              Brigadeiro para Recheio Cremoso
+              Variações de Recheios de Brigadeiro
             </h2>
-            <div className="mt-4 space-y-6">
-              <RecipeStep title="Ingredientes">
-                <ul className="list-disc pl-5 space-y-1">
-                  <li>1 lata de leite condensado</li>
-                  <li>1 colher (sopa) de manteiga</li>
-                  <li>4 colheres (sopa) de chocolate em pó</li>
-                  <li>½ caixinha de creme de leite (opcional – deixa mais cremoso)</li>
-                </ul>
-              </RecipeStep>
-              <RecipeStep title="Modo de preparo">
-                <ol className="list-decimal pl-5 space-y-2">
-                  <li>Misture todos os ingredientes (exceto o creme de leite) e leve ao fogo baixo.</li>
-                  <li>Mexa até desgrudar do fundo da panela.</li>
-                  <li>Adicione o creme de leite e misture bem.</li>
-                  <li>Deixe esfriar antes de usar.</li>
-                </ol>
-              </RecipeStep>
-              <RecipeStep title="Dica Pro">
-                <p>Use um saco de confeitar para aplicar o recheio com precisão e higiene.</p>
-              </RecipeStep>
-            </div>
+            <CardDescription>
+                Clique em cada recheio para ver os detalhes da receita.
+            </CardDescription>
+
+            <Accordion type="single" collapsible className="w-full mt-4">
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-lg font-headline">Brigadeiro Tradicional Cremoso</AccordionTrigger>
+                <AccordionContent>
+                  <RecipeStep title="Ingredientes">
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>1 lata de leite condensado</li>
+                      <li>1 colher (sopa) de manteiga</li>
+                      <li>4 colheres (sopa) de chocolate em pó</li>
+                      <li>½ caixinha de creme de leite (opcional – deixa mais cremoso)</li>
+                    </ul>
+                  </RecipeStep>
+                  <RecipeStep title="Modo de preparo">
+                    <ol className="list-decimal pl-5 space-y-2">
+                      <li>Misture todos os ingredientes (exceto o creme de leite) e leve ao fogo baixo.</li>
+                      <li>Mexa até desgrudar do fundo da panela.</li>
+                      <li>Adicione o creme de leite e misture bem.</li>
+                      <li>Deixe esfriar antes de usar.</li>
+                    </ol>
+                  </RecipeStep>
+                </AccordionContent>
+              </AccordionItem>
+              
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-lg font-headline">Brigadeiro de Pistache</AccordionTrigger>
+                <AccordionContent>
+                  <RecipeStep title="Ingredientes">
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>790g de leite condensado</li>
+                      <li>600g de creme de leite (17% gordura)</li>
+                      <li>80g de pasta de pistache 100% pura</li>
+                    </ul>
+                  </RecipeStep>
+                  <RecipeStep title="Modo de Preparo">
+                    <ol className="list-decimal pl-5 space-y-2">
+                      <li>Misture o leite condensado com a pasta até ficar homogêneo.</li>
+                      <li>Adicione o creme de leite.</li>
+                      <li>Leve ao fogo médio/alto mexendo sempre.</li>
+                      <li>Cozinhe por 25 a 30 minutos até o ponto de enrolar.</li>
+                      <li>Resfrie e embale.</li>
+                    </ol>
+                  </RecipeStep>
+                   <RecipeStep title="Validade">
+                       <p>10 dias na geladeira ou 60 dias congelado (-18 °C).</p>
+                    </RecipeStep>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-lg font-headline">Brigadeiro Meio Amargo</AccordionTrigger>
+                <AccordionContent>
+                  <RecipeStep title="Ingredientes">
+                    <ul className="list-disc pl-5 space-y-1">
+                      <li>790g de leite condensado</li>
+                      <li>400g de creme de leite (17%)</li>
+                      <li>70g de chocolate meio amargo nobre</li>
+                      <li>20g de cacau em pó 100%</li>
+                    </ul>
+                  </RecipeStep>
+                  <RecipeStep title="Modo de Preparo">
+                    <ol className="list-decimal pl-5 space-y-2">
+                      <li>Misture leite condensado, creme de leite e cacau.</li>
+                      <li>Adicione o chocolate derretido.</li>
+                      <li>Cozinhe por 25 a 30 minutos até o ponto de enrolar.</li>
+                      <li>Resfrie e embale.</li>
+                    </ol>
+                  </RecipeStep>
+                   <RecipeStep title="Validade">
+                       <p>10 dias na geladeira ou 60 dias congelado.</p>
+                    </RecipeStep>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-lg font-headline">Brigadeiro Brûlée</AccordionTrigger>
+                <AccordionContent>
+                  <RecipeStep title="Ingredientes">
+                    <ul className="list-disc pl-5 space-y-1">
+                       <li>395g de leite condensado</li>
+                       <li>300g de creme de leite (17%)</li>
+                       <li>5 a 10g de pasta de baunilha ou ½ fava (ou essência)</li>
+                    </ul>
+                  </RecipeStep>
+                  <RecipeStep title="Modo de Preparo">
+                    <ol className="list-decimal pl-5 space-y-2">
+                      <li>Misture todos os ingredientes na panela.</li>
+                      <li>Leve ao fogo médio, mexendo por 25 a 30 minutos até o ponto de enrolar.</li>
+                      <li>Esfrie e embale.</li>
+                    </ol>
+                  </RecipeStep>
+                   <RecipeStep title="Validade">
+                       <p>10 dias na geladeira ou 60 dias congelado.</p>
+                    </RecipeStep>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5">
+                <AccordionTrigger className="text-lg font-headline">Brigadeiro de Maracujá</AccordionTrigger>
+                <AccordionContent>
+                  <RecipeStep title="Ingredientes">
+                    <ul className="list-disc pl-5 space-y-1">
+                        <li>790g de leite condensado</li>
+                        <li>600g de creme de leite (17%)</li>
+                        <li>100g de redução de maracujá</li>
+                    </ul>
+                  </RecipeStep>
+                  <RecipeStep title="Modo de Preparo">
+                    <ol className="list-decimal pl-5 space-y-2">
+                      <li>Cozinhe o leite condensado e creme de leite por 25 a 30 minutos.</li>
+                      <li>Fora do fogo, adicione a redução e misture bem.</li>
+                      <li>Volte ao fogo por 2 minutos para ajustar o ponto.</li>
+                      <li>Esfrie e embale.</li>
+                    </ol>
+                  </RecipeStep>
+                   <RecipeStep title="Validade">
+                       <p>10 dias na geladeira ou 60 dias congelado.</p>
+                    </RecipeStep>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </TabsContent>
 
           <TabsContent value="assembly" className="mt-6">
