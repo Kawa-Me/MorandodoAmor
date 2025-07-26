@@ -25,7 +25,7 @@ export function PricingCalculator() {
   const [costs, setCosts] = useState<Costs>({
     ingredientCost: "",
     packagingCost: "",
-    profitMargin: 300,
+    profitMargin: "",
     recipeYield: "",
   });
 
@@ -42,17 +42,19 @@ export function PricingCalculator() {
       }
     };
 
+    const profitMarginValue = costs.profitMargin === "" ? 300 : Number(costs.profitMargin);
+
   const { totalRecipeCost, costPerUnit, suggestedPrice, profitPerUnit } = useMemo(() => {
-    const { ingredientCost, packagingCost, profitMargin, recipeYield } = costs;
+    const { ingredientCost, packagingCost, recipeYield } = costs;
     
     const validYield = Number(recipeYield) > 0 ? Number(recipeYield) : 1;
     const totalRecipeCost = Number(ingredientCost) + Number(packagingCost);
     const costPerUnit = totalRecipeCost / validYield;
-    const suggestedPrice = costPerUnit * (1 + Number(profitMargin) / 100);
+    const suggestedPrice = costPerUnit * (1 + profitMarginValue / 100);
     const profitPerUnit = suggestedPrice - costPerUnit;
 
     return { totalRecipeCost, costPerUnit, suggestedPrice, profitPerUnit };
-  }, [costs]);
+  }, [costs, profitMarginValue]);
 
   const formatCurrency = (value: number) => {
     return isNaN(value) || !isFinite(value) ? "R$0,00" : value.toLocaleString("pt-BR", {
@@ -69,46 +71,51 @@ export function PricingCalculator() {
             Calculadora de Preços
         </CardTitle>
         <CardDescription>
-          Calcule o preço de venda ideal para não ter prejuízo. A margem de lucro sugerida é de 300%.
+          Calcule o preço de venda ideal. A margem de lucro padrão é 300%, mas você pode alterar.
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-        <div className="space-y-4">
-            <div className="space-y-2">
-                <Label htmlFor="ingredientCost" className="flex items-center gap-2"><Soup className="h-4 w-4" /> Custo total dos ingredientes (R$)</Label>
-                <Input id="ingredientCost" type="number" placeholder="Digite aqui" value={costs.ingredientCost} onChange={handleCostChange("ingredientCost")} />
+      <CardContent className="space-y-6">
+        <div className="flex flex-col items-center justify-center space-y-2">
+            <div className="w-full max-w-[280px] aspect-square rounded-lg overflow-hidden shadow-lg">
+                <video
+                className="w-full h-full object-cover"
+                src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                controlsList="nodownload"
+                data-ai-hint="candy business"
+                >
+                Seu navegador não suporta a tag de vídeo.
+                </video>
             </div>
-            <div className="space-y-2">
-                <Label htmlFor="packagingCost" className="flex items-center gap-2"><Package className="h-4 w-4" /> Custo total das embalagens (R$)</Label>
-                <Input id="packagingCost" type="number" placeholder="Digite aqui" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
-            </div>
-            <div className="space-y-2">
-                <Label htmlFor="recipeYield" className="flex items-center gap-2"><WholeWord className="h-4 w-4" /> Quantos morangos rendeu?</Label>
-                <Input id="recipeYield" type="number" placeholder="Digite aqui" value={costs.recipeYield} onChange={handleCostChange("recipeYield")} />
-            </div>
-            <div className="space-y-2">
-                <Label htmlFor="profitMargin" className="flex items-center gap-2"><Percent className="h-4 w-4" /> Margem de Lucro (%)</Label>
-                <div className="relative">
-                  <Input id="profitMargin" type="number" placeholder="300" className="pr-8" value={costs.profitMargin} onChange={handleCostChange("profitMargin")} />
+            <p className="text-xs text-muted-foreground text-center">Precificação e Lucro. Créditos: @deboradelus</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+            <div className="space-y-4">
+                <div className="space-y-2">
+                    <Label htmlFor="ingredientCost" className="flex items-center gap-2"><Soup className="h-4 w-4" /> Custo total dos ingredientes (R$)</Label>
+                    <Input id="ingredientCost" type="number" placeholder="Digite aqui" value={costs.ingredientCost} onChange={handleCostChange("ingredientCost")} />
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="packagingCost" className="flex items-center gap-2"><Package className="h-4 w-4" /> Custo total das embalagens (R$)</Label>
+                    <Input id="packagingCost" type="number" placeholder="Digite aqui" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
                 </div>
             </div>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="w-full max-w-[280px] aspect-square rounded-lg overflow-hidden shadow-lg">
-            <video
-              className="w-full h-full object-cover"
-              src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              controlsList="nodownload"
-              data-ai-hint="candy business"
-            >
-              Seu navegador não suporta a tag de vídeo.
-            </video>
-          </div>
-          <p className="text-xs text-muted-foreground text-center">Precificação e Lucro. Créditos: @deboradelus</p>
+            <div className="space-y-4">
+                 <div className="space-y-2">
+                    <Label htmlFor="recipeYield" className="flex items-center gap-2"><WholeWord className="h-4 w-4" /> Quantos morangos rendeu?</Label>
+                    <Input id="recipeYield" type="number" placeholder="Digite aqui" value={costs.recipeYield} onChange={handleCostChange("recipeYield")} />
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="profitMargin" className="flex items-center gap-2"><Percent className="h-4 w-4" /> Margem de Lucro (%)</Label>
+                    <div className="relative">
+                    <Input id="profitMargin" type="number" placeholder="Padrão: 300" className="pr-8" value={costs.profitMargin} onChange={handleCostChange("profitMargin")} />
+                    </div>
+                </div>
+            </div>
         </div>
       </CardContent>
       <CardFooter className="bg-muted/50 p-4 rounded-b-lg mt-4 flex flex-col items-start gap-4">
