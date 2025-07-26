@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, ChangeEvent } from "react";
+import Link from 'next/link';
 import {
   Card,
   CardContent,
@@ -11,29 +12,26 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { DollarSign, Percent } from "lucide-react";
+import { DollarSign, Percent, PlayCircle } from "lucide-react";
 
 interface Costs {
-  strawberryCost: number;
-  fillingCost: number;
+  ingredientCost: number;
   packagingCost: number;
-  quantity: number;
+  productionTimeCost: number;
   profitMargin: number;
 }
 
 export function PricingCalculator() {
   const [costs, setCosts] = useState<Costs>({
-    strawberryCost: 10,
-    fillingCost: 8,
+    ingredientCost: 20,
     packagingCost: 5,
-    quantity: 12,
-    profitMargin: 50,
+    productionTimeCost: 10,
+    profitMargin: 300,
   });
 
   const handleCostChange =
     (field: keyof Costs) => (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
-      // Allow empty input for better user experience
       if (value === "") {
         setCosts((prev) => ({ ...prev, [field]: "" }));
         return;
@@ -44,86 +42,80 @@ export function PricingCalculator() {
       }
     };
 
-  const { totalCost, costPerUnit, suggestedPrice, totalProfit } = useMemo(() => {
-    const { strawberryCost, fillingCost, packagingCost, quantity, profitMargin } = costs;
-    if (quantity <= 0) return { totalCost: 0, costPerUnit: 0, suggestedPrice: 0, totalProfit: 0 };
+  const { totalCost, suggestedPrice, profit } = useMemo(() => {
+    const { ingredientCost, packagingCost, productionTimeCost, profitMargin } = costs;
     
-    const totalMaterialCost = Number(strawberryCost) + Number(fillingCost) + Number(packagingCost);
-    const costPerUnit = totalMaterialCost / quantity;
-    const suggestedPrice = costPerUnit * (1 + Number(profitMargin) / 100);
-    const totalProfit = (suggestedPrice * quantity) - totalMaterialCost;
+    const totalBaseCost = Number(ingredientCost) + Number(packagingCost) + Number(productionTimeCost);
+    const suggestedPrice = totalBaseCost * (Number(profitMargin) / 100);
+    const profit = suggestedPrice - totalBaseCost;
 
-    return { totalCost: totalMaterialCost, costPerUnit, suggestedPrice, totalProfit };
+    return { totalCost: totalBaseCost, suggestedPrice, profit };
   }, [costs]);
 
   const formatCurrency = (value: number) => {
-    return isNaN(value) || !isFinite(value) ? "$0.00" : value.toLocaleString("en-US", {
+    return isNaN(value) || !isFinite(value) ? "R$0,00" : value.toLocaleString("pt-BR", {
       style: "currency",
-      currency: "USD",
+      currency: "BRL",
     });
   };
 
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="font-headline text-3xl">Pricing Calculator</CardTitle>
+        <CardTitle className="font-headline text-3xl">Precificação e Lucratividade</CardTitle>
         <CardDescription>
-          Calculate the ideal price for your candy strawberries to ensure
-          profitability.
+          Calcule o preço ideal para seus morangos do amor. A margem de lucro ideal é de 3 a 4 vezes o custo.
         </CardDescription>
+         <Link href="https://www.tiktok.com/@deboradelus/video/7529553584443215109" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2 pt-2">
+            <PlayCircle className="h-5 w-5" />
+            Vídeo explicativo: Assista aqui
+        </Link>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="strawberryCost">Strawberry Cost</Label>
+        <div className="space-y-2">
+            <Label htmlFor="ingredientCost">Custo de Ingredientes</Label>
             <div className="relative">
-              <DollarSign className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input id="strawberryCost" type="number" placeholder="10.00" className="pl-8" value={costs.strawberryCost} onChange={handleCostChange("strawberryCost")} />
+                <span className="absolute left-2.5 top-2.5 text-sm text-muted-foreground">R$</span>
+                <Input id="ingredientCost" type="number" placeholder="20.00" className="pl-8" value={costs.ingredientCost} onChange={handleCostChange("ingredientCost")} />
             </div>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="fillingCost">Filling Cost</Label>
-             <div className="relative">
-              <DollarSign className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input id="fillingCost" type="number" placeholder="8.00" className="pl-8" value={costs.fillingCost} onChange={handleCostChange("fillingCost")}/>
-            </div>
-          </div>
         </div>
-         <div className="space-y-2">
-            <Label htmlFor="packagingCost">Total Packaging Cost</Label>
+        <div className="space-y-2">
+            <Label htmlFor="packagingCost">Custo de Embalagens</Label>
             <div className="relative">
-              <DollarSign className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input id="packagingCost" type="number" placeholder="5.00" className="pl-8" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
+                <span className="absolute left-2.5 top-2.5 text-sm text-muted-foreground">R$</span>
+                <Input id="packagingCost" type="number" placeholder="5.00" className="pl-8" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
             </div>
-          </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label htmlFor="quantity">Quantity</Label>
-            <Input id="quantity" type="number" placeholder="12" value={costs.quantity} onChange={handleCostChange("quantity")} />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="profitMargin">Profit Margin</Label>
+        </div>
+        <div className="space-y-2">
+            <Label htmlFor="productionTimeCost">Custo do Tempo de Produção</Label>
+            <div className="relative">
+                <span className="absolute left-2.5 top-2.5 text-sm text-muted-foreground">R$</span>
+                <Input id="productionTimeCost" type="number" placeholder="10.00" className="pl-8" value={costs.productionTimeCost} onChange={handleCostChange("productionTimeCost")} />
+            </div>
+        </div>
+        <div className="space-y-2">
+            <Label htmlFor="profitMargin">Margem de Lucro (%)</Label>
             <div className="relative">
               <Percent className="absolute right-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input id="profitMargin" type="number" placeholder="50" className="pr-8" value={costs.profitMargin} onChange={handleCostChange("profitMargin")} />
+              <Input id="profitMargin" type="number" placeholder="300" className="pr-8" value={costs.profitMargin} onChange={handleCostChange("profitMargin")} />
             </div>
           </div>
-        </div>
       </CardContent>
       <CardFooter className="bg-secondary/50 p-4 rounded-b-lg mt-4">
         <div className="w-full space-y-2">
             <div className="flex justify-between items-center font-medium">
-                <span>Cost Per Unit:</span>
-                <span>{formatCurrency(costPerUnit)}</span>
+                <span>Custo Total por Unidade:</span>
+                <span>{formatCurrency(totalCost)}</span>
             </div>
             <div className="flex justify-between items-center font-bold text-lg text-primary">
-                <span className="font-headline">Suggested Price Per Unit:</span>
+                <span className="font-headline">Preço de Venda Sugerido:</span>
                 <span className="font-headline">{formatCurrency(suggestedPrice)}</span>
             </div>
              <div className="flex justify-between items-center text-sm text-muted-foreground pt-2">
-                <span>Total Profit:</span>
-                <span>{formatCurrency(totalProfit)}</span>
+                <span>Lucro por Unidade:</span>
+                <span>{formatCurrency(profit)}</span>
             </div>
+            <p className="text-xs text-center pt-2 text-muted-foreground">Sugestão de preço por unidade: R$15 a R$20 (dependendo da região e apresentação).</p>
         </div>
       </CardFooter>
     </Card>

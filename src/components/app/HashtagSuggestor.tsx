@@ -30,8 +30,8 @@ import { motion } from "framer-motion";
 const formSchema = z.object({
   keywords: z
     .string()
-    .min(3, { message: "Please enter at least 3 characters." })
-    .max(100, { message: "Please enter no more than 100 characters." }),
+    .min(3, { message: "Por favor, insira pelo menos 3 caracteres." })
+    .max(100, { message: "Por favor, insira no máximo 100 caracteres." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -44,7 +44,7 @@ export function HashtagSuggestor() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      keywords: "gourmet candy strawberry",
+      keywords: "morango do amor, doces artesanais",
     },
   });
 
@@ -59,7 +59,7 @@ export function HashtagSuggestor() {
     } else if (result.error) {
       toast({
         variant: "destructive",
-        title: "Oh no! Something went wrong.",
+        title: "Ops! Algo deu errado.",
         description: result.error,
       });
     }
@@ -70,10 +70,10 @@ export function HashtagSuggestor() {
       <CardHeader>
         <CardTitle className="font-headline text-3xl flex items-center gap-2">
           <Wand2 className="h-7 w-7 text-accent" />
-          AI Hashtag Suggestor
+          Sugestor de Hashtags com IA
         </CardTitle>
         <CardDescription>
-          Maximize your social media reach with trending hashtags.
+          Maximize seu alcance nas redes sociais com hashtags em alta. Use #morangodoamor, #docesartesanais, #rendaextra.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -84,9 +84,9 @@ export function HashtagSuggestor() {
               name="keywords"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Enter Keywords</FormLabel>
+                  <FormLabel>Digite as palavras-chave</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., sweet treats, handmade candy" {...field} />
+                    <Input placeholder="ex: doces, confeitaria" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -98,14 +98,14 @@ export function HashtagSuggestor() {
               ) : (
                 <Lightbulb className="mr-2 h-4 w-4" />
               )}
-              Suggest Hashtags
+              Sugerir Hashtags
             </Button>
           </form>
         </Form>
 
         {(loading || hashtags.length > 0) && (
           <div className="mt-6">
-            <h4 className="font-headline text-lg">Suggestions</h4>
+            <h4 className="font-headline text-lg">Sugestões</h4>
             <div className="mt-3 flex flex-wrap gap-2">
               {loading ? (
                 <>

@@ -10,65 +10,61 @@ import { CheckCircle2 } from "lucide-react";
 const actionPlanData = [
   {
     day: 1,
-    title: "Research & Planning",
+    title: "Compras e Treinamento",
     tasks: [
-      "Define your target audience.",
-      "Research local competitors and pricing.",
-      "Source high-quality ingredients.",
+      "Compre ingredientes e embalagens.",
+      "Treine as receitas de calda e brigadeiro.",
     ],
   },
   {
     day: 2,
-    title: "Recipe Perfection",
+    title: "Criação de Conteúdo e Contatos",
     tasks: [
-      "Practice the calda and brigadeiro recipes.",
-      "Experiment with different strawberry sizes.",
-      "Get feedback from friends and family.",
+      "Tire fotos e grave vídeos do processo.",
+      "Monte sua lista de contatos (WhatsApp, vizinhos, amigos).",
     ],
   },
   {
     day: 3,
-    title: "Branding & Packaging",
+    title: "Divulgação Inicial",
     tasks: [
-      "Choose a name and logo for your business.",
-      "Design and order packaging (boxes, ribbons).",
-      "Create business cards or flyers.",
+      "Poste nas redes sociais (Feed, Reels, Stories).",
+      "Envie mensagens diretas apresentando o produto.",
     ],
   },
   {
     day: 4,
-    title: "Setup Social Media",
+    title: "Expansão em Grupos",
     tasks: [
-      "Create Instagram and Facebook pages.",
-      "Take high-quality photos of your product.",
-      "Use the Hashtag Suggestor to plan your posts.",
+      "Entre em grupos de vendas do Facebook e WhatsApp da sua cidade.",
+      "Publique também no Facebook Marketplace.",
     ],
   },
   {
     day: 5,
-    title: "Pricing & Legality",
+    title: "Vídeos Virais",
     tasks: [
-      "Use the Pricing Calculator to set your prices.",
-      "Research local food business regulations.",
-      "Set up a payment system (e.g., Venmo, PayPal).",
+      "Pesquise vídeos virais no TikTok e Instagram com a hashtag #morangodoamor.",
+      "Modele os vídeos e crie o seu.",
+      "Poste no seu TikTok e Instagram pessoal ou do negócio.",
     ],
   },
   {
     day: 6,
-    title: "Launch Promotion",
+    title: "Primeiras Entregas e Feedback",
     tasks: [
-      "Announce your launch date on social media.",
-      "Offer a special launch-day discount.",
-      "Reach out to local influencers or food bloggers.",
+      "Entregue os primeiros pedidos.",
+      "Peça feedback.",
+      "Incentive os clientes a postar e te marcar.",
+      "Ofereça um brinde ou desconto para quem fizer isso.",
     ],
   },
   {
     day: 7,
-    title: "Launch Day!",
+    title: "Promoção e Planejamento",
     tasks: [
-      "Prepare your first batch for sale.",
-      "Engage with customers on social media.",
-      "Collect testimonials and reviews.",
+      "Faça uma promoção agressiva (ex: leve 4, pague 3).",
+      "Reorganize estoque e se prepare para a nova semana.",
     ],
   },
 ];
@@ -78,7 +74,7 @@ export function ActionPlan() {
     <Card>
       <CardHeader>
         <CardTitle className="font-headline text-3xl">
-          7-Day Business Action Plan
+          BÔNUS: Plano Rápido de Ação (7 Dias)
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -86,7 +82,7 @@ export function ActionPlan() {
           {actionPlanData.map((item, index) => (
             <AccordionItem value={`item-${index}`} key={item.day}>
               <AccordionTrigger className="font-headline text-xl">
-                Day {item.day}: {item.title}
+                Dia {item.day}: {item.title}
               </AccordionTrigger>
               <AccordionContent>
                 <ul className="space-y-3 pt-2">

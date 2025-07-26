@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from 'next/link';
 import { PlayCircle } from "lucide-react";
 import {
   Card,
@@ -15,27 +16,11 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 
-const VideoPlaceholder = ({
-  src,
-  alt,
-  hint,
-}: {
-  src: string;
-  alt: string;
-  hint: string;
-}) => (
-  <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-lg">
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      className="object-cover"
-      data-ai-hint={hint}
-    />
-    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-      <PlayCircle className="h-16 w-16 text-white/80" />
-    </div>
-  </div>
+const VideoLink = ({ href }: { href: string; }) => (
+    <Link href={href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2 mt-4">
+      <PlayCircle className="h-5 w-5" />
+      Assista aqui
+    </Link>
 );
 
 const RecipeStep = ({
@@ -56,116 +41,88 @@ export function RecipeTabs() {
     <Card>
       <CardHeader>
         <CardTitle className="font-headline text-3xl">
-          The Perfect Candy Strawberry
+          O Morango Perfeito
         </CardTitle>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="calda">
           <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto">
-            <TabsTrigger value="calda">Calda Recipe</TabsTrigger>
-            <TabsTrigger value="brigadeiro">Brigadeiro Recipe</TabsTrigger>
-            <TabsTrigger value="assembly">Assembly</TabsTrigger>
-            <TabsTrigger value="storage">Storage</TabsTrigger>
+            <TabsTrigger value="calda">Receita da Calda</TabsTrigger>
+            <TabsTrigger value="brigadeiro">Recheio de Brigadeiro</TabsTrigger>
+            <TabsTrigger value="assembly">Montagem</TabsTrigger>
+            <TabsTrigger value="storage">Conservação</TabsTrigger>
           </TabsList>
 
           <TabsContent value="calda" className="mt-6">
             <h2 className="font-headline text-2xl font-bold">
-              Perfect Calda (Candy Coating)
+              Receita da Calda Perfeita
             </h2>
-            <p className="mt-2 text-muted-foreground">
-              Follow these steps for a flawless, glossy candy coating every
-              time.
-            </p>
-            <div className="mt-4 space-y-6">
-              <VideoPlaceholder
-                src="https://placehold.co/1280x720.png"
-                alt="Video instructions for calda recipe"
-                hint="candy making"
-              />
-              <RecipeStep title="Ingredients">
+             <RecipeStep title="Ingredientes">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>2 cups granulated sugar</li>
-                  <li>1/2 cup light corn syrup</li>
-                  <li>1/2 cup water</li>
-                  <li>Red food coloring (optional)</li>
+                  <li>1 xícara de açúcar cristal</li>
+                  <li>½ xícara de água</li>
+                  <li>1 colher (sopa) de glucose de milho (opcional – ajuda a não cristalizar)</li>
+                  <li>1 colher (chá) de suco de limão (dá brilho)</li>
                 </ul>
               </RecipeStep>
-              <RecipeStep title="Instructions">
+              <RecipeStep title="Modo de Preparo">
                 <ol className="list-decimal pl-5 space-y-1">
-                  <li>
-                    In a saucepan, combine sugar, corn syrup, and water.
-                  </li>
-                  <li>
-                    Cook over medium-high heat, stirring until sugar dissolves.
-                  </li>
-                  <li>
-                    Bring to a boil and cook without stirring until a candy
-                    thermometer reads 300°F (150°C).
-                  </li>
-                  <li>
-                    Remove from heat, add food coloring if desired, and carefully
-                    dip strawberries.
-                  </li>
+                  <li>Misture todos os ingredientes (menos o limão) em uma panela.</li>
+                  <li>Leve ao fogo médio até começar a ferver.</li>
+                  <li>Sem mexer, cozinhe até atingir o ponto de bala dura (use termômetro ou teste do copo com água gelada).</li>
+                  <li>Retire do fogo, adicione o suco de limão e mexa delicadamente.</li>
+                   <li>Deixe esfriar levemente antes de mergulhar os morangos.</li>
                 </ol>
               </RecipeStep>
-            </div>
+               <RecipeStep title="Dicas Pro">
+                <ul className="list-disc pl-5 space-y-1">
+                    <li>Nunca mexa após começar a ferver (evita cristalização).</li>
+                    <li>Use papel manteiga para secar os morangos.</li>
+                    <li>A calda deve cobrir completamente o morango.</li>
+                 </ul>
+              </RecipeStep>
           </TabsContent>
 
           <TabsContent value="brigadeiro" className="mt-6">
             <h2 className="font-headline text-2xl font-bold">
-              Creamy Brigadeiro Filling
+              Brigadeiro para Recheio Cremoso
             </h2>
-            <p className="mt-2 text-muted-foreground">
-              The secret to a decadent strawberry filling.
-            </p>
             <div className="mt-4 space-y-6">
-              <RecipeStep title="Ingredients">
+              <RecipeStep title="Ingredientes">
                 <ul className="list-disc pl-5 space-y-1">
-                  <li>1 can (14 oz) sweetened condensed milk</li>
-                  <li>1 tablespoon unsalted butter</li>
-                  <li>
-                    1/2 cup white chocolate chips
-                  </li>
-                  <li>1 teaspoon vanilla extract</li>
+                  <li>1 lata de leite condensado</li>
+                  <li>1 colher (sopa) de manteiga</li>
+                  <li>4 colheres (sopa) de chocolate em pó</li>
+                  <li>½ caixinha de creme de leite (opcional – deixa mais cremoso)</li>
                 </ul>
               </RecipeStep>
-              <RecipeStep title="Instructions">
+              <RecipeStep title="Modo de preparo">
                 <ol className="list-decimal pl-5 space-y-1">
-                  <li>
-                    Melt butter, condensed milk, and white chocolate in a non-stick pan over medium-low heat.
-                  </li>
-                  <li>
-                    Stir constantly until the mixture thickens and pulls away from the bottom of the pan (about 10-15 minutes).
-                  </li>
-                  <li>
-                    Remove from heat, stir in vanilla, and let it cool completely before using.
-                  </li>
+                  <li>Misture todos os ingredientes (exceto o creme de leite) e leve ao fogo baixo.</li>
+                  <li>Mexa até desgrudar do fundo da panela.</li>
+                  <li>Adicione o creme de leite e misture bem.</li>
+                  <li>Deixe esfriar antes de usar.</li>
                 </ol>
+              </RecipeStep>
+              <RecipeStep title="Dica Pro">
+                <p>Use um saco de confeitar para aplicar o recheio com precisão e higiene.</p>
               </RecipeStep>
             </div>
           </TabsContent>
 
           <TabsContent value="assembly" className="mt-6">
             <h2 className="font-headline text-2xl font-bold">
-              Assembly Guide
+             Montagem e Finalização Rápida
             </h2>
-            <p className="mt-2 text-muted-foreground">
-              Bring it all together for a beautiful result.
-            </p>
             <div className="mt-4 space-y-6">
-               <VideoPlaceholder
-                src="https://placehold.co/1280x720.png"
-                alt="Video instructions for assembling candy strawberries"
-                hint="food preparation"
-              />
-              <RecipeStep title="Steps">
+              <RecipeStep title="Passo a passo">
                 <ol className="list-decimal pl-5 space-y-1">
-                    <li>Wash and thoroughly dry your strawberries. The stem should be intact.</li>
-                    <li>Hollow out the strawberries from the bottom.</li>
-                    <li>Fill a piping bag with the cooled brigadeiro and fill each strawberry.</li>
-                    <li>Prepare your calda as per the recipe.</li>
-                    <li>Dip each filled strawberry into the hot calda, coating it completely.</li>
-                    <li>Place on a parchment-lined tray to harden. Work quickly!</li>
+                    <li>Lave e seque bem os morangos.</li>
+                    <li>Mergulhe um por um na calda.</li>
+                    <li>Deixe secar em papel manteiga.</li>
+                    <li>Recheie com brigadeiro.</li>
+                    <li>Decore com granulado, chocolate derretido ou confeitos.</li>
+                    <li>Embale em caixinhas bonitas e higiênicas.</li>
                 </ol>
               </RecipeStep>
             </div>
@@ -173,25 +130,15 @@ export function RecipeTabs() {
 
           <TabsContent value="storage" className="mt-6">
             <h2 className="font-headline text-2xl font-bold">
-              Storage & Maintenance
+              Conservação e Validade
             </h2>
-            <p className="mt-2 text-muted-foreground">
-              Keep your creations fresh and delicious.
-            </p>
             <div className="mt-4 space-y-6">
-               <VideoPlaceholder
-                src="https://placehold.co/1280x720.png"
-                alt="Video guide for storing candy strawberries"
-                hint="food storage"
-              />
-              <RecipeStep title="Tips">
-                 <ul className="list-disc pl-5 space-y-1">
-                    <li>Best enjoyed within 24 hours for optimal crunch.</li>
-                    <li>Store in a cool, dry place. Do not refrigerate, as condensation will dissolve the candy shell.</li>
-                    <li>If you must store them for longer, use an airtight container with silica gel packets to absorb moisture.</li>
-                    <li>Keep them separated to prevent sticking.</li>
-                 </ul>
-              </RecipeStep>
+                <VideoLink href="https://www.youtube.com/shorts/xWSAEaCNCWo" />
+                <ul className="list-disc pl-5 space-y-1 mt-4">
+                  <li>Conserve na geladeira por até 48 horas.</li>
+                  <li>Use embalagens bem vedadas.</li>
+                  <li>Evite locais quentes para manter a crocância da calda.</li>
+                </ul>
             </div>
           </TabsContent>
         </Tabs>
