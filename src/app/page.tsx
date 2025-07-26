@@ -4,7 +4,7 @@ import { ActionPlan } from "@/components/app/ActionPlan";
 import { HashtagSuggestor } from "@/components/app/HashtagSuggestor";
 import { PricingCalculator } from "@/components/app/PricingCalculator";
 import { ExtraTips } from "@/components/app/ExtraTips";
-import { Bonus } from "@/components/app/Bonus";
+import { IfoodBonus, PdfBonus } from "@/components/app/Bonus";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 
 export default function Home() {
@@ -46,12 +46,13 @@ export default function Home() {
             <PricingCalculator />
             <HashtagSuggestor />
             <ExtraTips />
+            <PdfBonus />
           </div>
         </div>
         
         {/* Seção Bônus */}
         <div className="mx-auto max-w-7xl mt-8">
-            <Bonus />
+            <IfoodBonus />
         </div>
       </main>
     </div>
