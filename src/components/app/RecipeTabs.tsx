@@ -1,8 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import Link from 'next/link';
-import { PlayCircle } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -15,13 +12,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-
-const VideoLink = ({ href }: { href: string; }) => (
-    <Link href={href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2 mt-4">
-      <PlayCircle className="h-5 w-5" />
-      Assista aqui
-    </Link>
-);
 
 const RecipeStep = ({
   title,
@@ -133,7 +123,15 @@ export function RecipeTabs() {
               Conservação e Validade
             </h2>
             <div className="mt-4 space-y-6">
-                <VideoLink href="https://www.youtube.com/shorts/xWSAEaCNCWo" />
+                <div className="aspect-video w-full">
+                  <iframe
+                    className="w-full h-full rounded-lg"
+                    src="https://www.youtube.com/embed/xWSAEaCNCWo"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
                 <ul className="list-disc pl-5 space-y-1 mt-4">
                   <li>Conserve na geladeira por até 48 horas.</li>
                   <li>Use embalagens bem vedadas.</li>

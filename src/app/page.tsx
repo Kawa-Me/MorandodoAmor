@@ -6,8 +6,6 @@ import { PricingCalculator } from "@/components/app/PricingCalculator";
 import { ExtraTips } from "@/components/app/ExtraTips";
 import { Bonus } from "@/components/app/Bonus";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
-import { PlayCircle } from "lucide-react";
 
 export default function Home() {
   return (
@@ -22,10 +20,15 @@ export default function Home() {
                 <CardDescription>Veja como é fácil começar sua jornada com o Morango do Amor.</CardDescription>
               </CardHeader>
               <CardContent>
-                <Link href="https://www.youtube.com/shorts/EOOEUIMcwMA" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2">
-                  <PlayCircle className="h-5 w-5" />
-                  Acesse aqui
-                </Link>
+                <div className="aspect-video w-full">
+                  <iframe
+                    className="w-full h-full rounded-lg"
+                    src="https://www.youtube.com/embed/EOOEUIMcwMA"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </CardContent>
             </Card>
             <RecipeTabs />

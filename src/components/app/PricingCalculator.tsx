@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo, ChangeEvent } from "react";
-import Link from 'next/link';
 import {
   Card,
   CardContent,
@@ -12,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { DollarSign, Percent, PlayCircle } from "lucide-react";
+import { DollarSign, Percent } from "lucide-react";
 
 interface Costs {
   ingredientCost: number;
@@ -66,12 +65,17 @@ export function PricingCalculator() {
         <CardDescription>
           Calcule o preço ideal para seus morangos do amor. A margem de lucro ideal é de 3 a 4 vezes o custo.
         </CardDescription>
-         <Link href="https://www.tiktok.com/@deboradelus/video/7529553584443215109" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center gap-2 pt-2">
-            <PlayCircle className="h-5 w-5" />
-            Vídeo explicativo: Assista aqui
-        </Link>
       </CardHeader>
       <CardContent className="space-y-4">
+        <div className="aspect-video w-full mb-4">
+            <iframe 
+                src="https://www.tiktok.com/embed/v2/7529553584443215109" 
+                className="w-full h-full rounded-lg"
+                allow="autoplay; encrypted-media;"
+                allowFullScreen
+                >
+            </iframe>
+        </div>
         <div className="space-y-2">
             <Label htmlFor="ingredientCost">Custo de Ingredientes</Label>
             <div className="relative">
