@@ -26,6 +26,7 @@ export default function Home() {
                           className="w-full h-full object-cover"
                           src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/morangodoamor//RECEITA%20MORANGO%20DO%20AMOR.mp4"
                           controls
+                          controlsList="nodownload"
                           poster="https://placehold.co/1280x720/f8b0c4/e53935?text=Morango+do+Amor"
                           data-ai-hint="strawberry chocolate"
                       >
