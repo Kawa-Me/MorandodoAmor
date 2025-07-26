@@ -20,7 +20,7 @@ export default function Home() {
                 <CardDescription>Veja como é fácil começar sua jornada com o Morango do Amor.</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="w-full max-w-sm mx-auto">
+                <div className="w-full max-w-xs mx-auto">
                     <div className="relative pb-[177.77%] h-0">
                         <video
                             className="absolute top-0 left-0 w-full h-full rounded-lg"
