@@ -137,6 +137,7 @@ export function RecipeTabs() {
                         Seu navegador não suporta a tag de vídeo.
                     </video>
                 </div>
+                <p className="text-xs text-muted-foreground mt-2 text-right">Créditos do vídeo: @FlakesBrasil</p>
                 <ul className="list-disc pl-5 space-y-2 mt-4">
                   <li>Conserve na geladeira por até 48 horas.</li>
                   <li>Use embalagens bem vedadas.</li>
