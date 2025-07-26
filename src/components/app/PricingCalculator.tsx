@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calculator, Package, Percent, Soup, WholeWord } from "lucide-react";
+import { AlertTriangle, Calculator, Package, Percent, Soup, WholeWord } from "lucide-react";
 
 interface Costs {
   ingredientCost: number | "";
@@ -32,7 +32,6 @@ export function PricingCalculator() {
   const handleCostChange =
     (field: keyof Costs) => (e: ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
-      // Allow clearing the input
       if (value === "") {
         setCosts((prev) => ({ ...prev, [field]: "" }));
         return;
@@ -90,7 +89,13 @@ export function PricingCalculator() {
                 Seu navegador não suporta a tag de vídeo.
                 </video>
             </div>
-            <p className="text-xs text-muted-foreground text-center">Precificação e Lucro. Créditos: @deboradelus</p>
+             <div className="flex flex-col items-center text-center mt-2 space-y-1">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <AlertTriangle className="h-4 w-4 text-amber-500 flex-shrink-0" />
+                    <span>Para começar, clique no play e aguarde o vídeo carregar.</span>
+                </div>
+                <p className="text-xs text-muted-foreground">Créditos: @deboradelus</p>
+            </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">

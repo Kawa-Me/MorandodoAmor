@@ -6,6 +6,7 @@ import { PricingCalculator } from "@/components/app/PricingCalculator";
 import { ExtraTips } from "@/components/app/ExtraTips";
 import { IfoodBonus, PdfBonus } from "@/components/app/Bonus";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { AlertTriangle } from "lucide-react";
 
 export default function DashboardPage() {
   return (
@@ -34,7 +35,13 @@ export default function DashboardPage() {
                           Seu navegador não suporta a tag de vídeo.
                       </video>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-2 text-right">Créditos do vídeo: @tabataromero</p>
+                    <div className="flex justify-between items-center mt-2">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <AlertTriangle className="h-4 w-4 text-amber-500" />
+                        <span>Para começar, clique no play e aguarde o vídeo carregar.</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground text-right">Créditos: @tabataromero</p>
+                    </div>
                 </CardContent>
             </Card>
 

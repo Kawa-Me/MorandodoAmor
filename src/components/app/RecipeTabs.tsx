@@ -19,7 +19,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { Apple, Cookie, Package, Refrigerator } from "lucide-react";
+import { AlertTriangle, Apple, Cookie, Package, Refrigerator } from "lucide-react";
 
 const RecipeStep = ({
   title,
@@ -253,7 +253,13 @@ export function RecipeTabs() {
                         Seu navegador não suporta a tag de vídeo.
                     </video>
                 </div>
-                <p className="text-xs text-muted-foreground mt-2 text-right">Créditos do vídeo: @FlakesBrasil</p>
+                 <div className="flex justify-between items-center mt-2">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <AlertTriangle className="h-4 w-4 text-amber-500" />
+                        <span>Para começar, clique no play e aguarde o vídeo carregar.</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground text-right">Créditos: @FlakesBrasil</p>
+                    </div>
                 <ul className="list-disc pl-5 space-y-2 mt-4">
                   <li>Conserve na geladeira por até 48 horas.</li>
                   <li>Use embalagens bem vedadas.</li>
