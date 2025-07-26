@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo, ChangeEvent } from "react";
@@ -16,7 +17,6 @@ import { Calculator, Percent } from "lucide-react";
 interface Costs {
   ingredientCost: number;
   packagingCost: number;
-  productionTimeCost: number;
   profitMargin: number;
 }
 
@@ -24,7 +24,6 @@ export function PricingCalculator() {
   const [costs, setCosts] = useState<Costs>({
     ingredientCost: 20,
     packagingCost: 5,
-    productionTimeCost: 10,
     profitMargin: 300,
   });
 
@@ -43,9 +42,9 @@ export function PricingCalculator() {
     };
 
   const { totalCost, suggestedPrice, profit } = useMemo(() => {
-    const { ingredientCost, packagingCost, productionTimeCost, profitMargin } = costs;
+    const { ingredientCost, packagingCost, profitMargin } = costs;
     
-    const totalBaseCost = Number(ingredientCost) + Number(packagingCost) + Number(productionTimeCost);
+    const totalBaseCost = Number(ingredientCost) + Number(packagingCost);
     const suggestedPrice = totalBaseCost * (Number(profitMargin) / 100);
     const profit = suggestedPrice - totalBaseCost;
 
@@ -92,10 +91,6 @@ export function PricingCalculator() {
         <div className="space-y-2">
             <Label htmlFor="packagingCost">Custo de Embalagens (R$)</Label>
             <Input id="packagingCost" type="number" placeholder="5.00" value={costs.packagingCost} onChange={handleCostChange("packagingCost")} />
-        </div>
-        <div className="space-y-2">
-            <Label htmlFor="productionTimeCost">Custo do Tempo de Produção (R$)</Label>
-            <Input id="productionTimeCost" type="number" placeholder="10.00" value={costs.productionTimeCost} onChange={handleCostChange("productionTimeCost")} />
         </div>
         <div className="space-y-2">
             <Label htmlFor="profitMargin">Margem de Lucro (%)</Label>
