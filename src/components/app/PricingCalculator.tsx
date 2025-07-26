@@ -80,7 +80,6 @@ export function PricingCalculator() {
                 <video
                 className="w-full h-full object-cover"
                 src="https://pjuifgyrftpnjpurmzzn.supabase.co/storage/v1/object/public/tribo//ssstik.io_@deboradelus_1753536983624.mp4"
-                playsInline
                 controls
                 controlsList="nodownload"
                 data-ai-hint="candy business"
